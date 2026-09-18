@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Darukaa.Earth — AI Biodiversity Intelligence</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #07130d;
+        color: #edf7ef;
+        min-height: 100vh;
+    }
+
+    .container {
+        width: 92%;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    header {
+        padding: 28px 0;
+        border-bottom: 1px solid #20382a;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .logo span {
+        color: #68d391;
+    }
+
+    .tagline {
+        margin-top: 6px;
+        color: #91a99a;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 55px 0 35px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+        line-height: 1.05;
+        max-width: 760px;
+    }
+
+    .hero h1 span {
+        color: #68d391;
+    }
+
+    .hero p {
+        color: #a9bbae;
+        margin-top: 18px;
+        max-width: 700px;
+        line-height: 1.6;
+    }
+
+    .dashboard {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 24px;
+        margin-bottom: 50px;
+    }
+
+    .card {
+        background: #0c1d14;
+        border: 1px solid #20382a;
+        border-radius: 18px;
+        padding: 24px;
+    }
+
+    .card h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        color: #9caf9f;
+        font-size: 13px;
+        margin: 15px 0 7px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        background: #07130d;
+        color: white;
+        border: 1px solid #294735;
+        border-radius: 10px;
+        padding: 12px;
+        outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #68d391;
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+        padding: 14px;
+        background: #68d391;
+        color: #07130d;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #9ae6b4;
+    }
+
+    .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .metric {
+        background: #10261a;
+        border-radius: 12px;
+        padding: 15px;
+    }
+
+    .metric-title {
+        font-size: 12px;
+        color: #8fa695;
+    }
+
+    .metric-value {
+        font-size: 23px;
+        font-weight: 800;
+        margin-top: 7px;
+    }
+
+    .warning {
+        color: #f6c453;
+    }
+
+    .result {
+        line-height: 1.65;
+    }
+
+    .recommendation {
+        background: #10261a;
+        border-left: 4px solid #68d391;
+        border-radius: 10px;
+        padding: 18px;
+        margin-bottom: 14px;
+    }
+
+    .recommendation h3 {
+        color: #68d391;
+        margin-bottom: 8px;
+    }
+
+    .recommendation p {
+        color: #c4d2c7;
+        margin: 6px 0;
+    }
+
+    .pill {
+        display: inline-block;
+        padding: 5px 9px;
+        background: #173521;
+        border-radius: 20px;
+        color: #9ae6b4;
+        font-size: 11px;
+        margin: 4px 4px 0 0;
+    }
+
+    .evidence {
+        margin-top: 22px;
+    }
+
+    .source {
+        padding: 13px;
+        border-bottom: 1px solid #20382a;
+        color: #b9c8bd;
+        font-size: 14px;
+    }
+
+    .source:last-child {
+        border-bottom: none;
+    }
+
+    .empty {
+        color: #718278;
+        text-align: center;
+        padding: 70px 20px;
+    }
+
+    .loading {
+        display: none;
+        color: #68d391;
+        text-align: center;
+        padding: 30px;
+    }
+
+    @media(max-width: 850px) {
+
+        .dashboard {
+            grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+        }
+
+        .metrics {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="container">
+
+    <div class="logo">
+        Darukaa<span>.Earth</span>
+    </div>
+
+    <div class="tagline">
+        AI-Powered Biodiversity Intelligence
+    </div>
+
+</div>
+```
+
+</header>
+
+<main class="container">
+
+```
+<section class="hero">
+
+    <h1>
+        Turn environmental data into
+        <span>evidence-backed action.</span>
+    </h1>
+
+    <p>
+        Darukaa.Earth connects soil health, water availability,
+        land use and biodiversity through scientific knowledge
+        retrieval and multi-metric reasoning.
+    </p>
+
+</section>
+
+
+<section class="dashboard">
+
+
+    <!-- INPUT -->
+
+    <div class="card">
+
+        <h2>🌱 Environmental Profile</h2>
+
+        <label>Soil Organic Carbon (%)</label>
+
+        <input
+            id="soil"
+            type="number"
+            step="0.1"
+            value="0.3"
+        >
+
+
+        <label>Annual Rainfall (mm)</label>
+
+        <input
+            id="rainfall"
+            type="number"
+            value="600"
+        >
+
+
+        <label>Land Use</label>
+
+        <select id="land">
+
+            <option value="monoculture">
+                Monoculture
+            </option>
+
+            <option value="intercropping">
+                Intercropping
+            </option>
+
+            <option value="agroforestry">
+                Agroforestry
+            </option>
+
+        </select>
+
+
+        <label>Region</label>
+
+        <select id="region">
+
+            <option value="semi-arid">
+                Semi-arid
+            </option>
+
+            <option value="arid">
+                Arid
+            </option>
+
+            <option value="tropical">
+                Tropical
+            </option>
+
+        </select>
+
+
+        <button onclick="analyze()">
+            ANALYZE ECOSYSTEM →
+        </button>
+
+    </div>
+
+
+    <!-- RESULTS -->
+
+    <div class="card">
+
+        <h2>🧠 AI Ecosystem Analysis</h2>
+
+        <div id="empty" class="empty">
+
+            Enter environmental conditions and run
+            the analysis to generate recommendations.
+
+        </div>
+
+
+        <div id="loading" class="loading">
+
+            Retrieving scientific knowledge...<br>
+            Connecting environmental metrics...<br>
+            Generating recommendations...
+
+        </div>
+
+
+        <div id="results" style="display:none;">
+
+            <div class="metrics">
+
+                <div class="metric">
+
+                    <div class="metric-title">
+                        SOIL CARBON
+                    </div>
+
+                    <div
+                        id="soilResult"
+                        class="metric-value warning"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-title">
+                        RAINFALL
+                    </div>
+
+                    <div
+                        id="rainResult"
+                        class="metric-value warning"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-title">
+                        LAND USE
+                    </div>
+
+                    <div
+                        id="landResult"
+                        class="metric-value"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="recommendations"></div>
+
+
+            <div class="evidence">
+
+                <h2>
+                    📚 Retrieved Scientific Evidence
+                </h2>
+
+                <div id="sources"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+<script>
+
+async function analyze() {
+
+    const soil =
+        document.getElementById("soil").value;
+
+    const rainfall =
+        document.getElementById("rainfall").value;
+
+    const land =
+        document.getElementById("land").value;
+
+    const region =
+        document.getElementById("region").value;
+
+
+    document.getElementById("empty").style.display =
+        "none";
+
+    document.getElementById("results").style.display =
+        "none";
+
+    document.getElementById("loading").style.display =
+        "block";
+
+
+    try {
+
+        const response = await fetch(
+            "/chat",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                        "application/json"
+                },
+
+                body: JSON.stringify({
+                    message:
+                        `My soil organic carbon is ${soil}% and rainfall is ${rainfall}mm. I use ${land} in a ${region} region. What should I do?`
+                })
+            }
+        );
+
+
+        const data = await response.json();
+
+
+        document.getElementById("loading").style.display =
+            "none";
+
+        document.getElementById("results").style.display =
+            "block";
+
+
+        document.getElementById("soilResult").innerText =
+            soil + "%";
+
+        document.getElementById("rainResult").innerText =
+            rainfall + " mm";
+
+        document.getElementById("landResult").innerText =
+            land;
+
+
+        renderResponse(
+            data.response || ""
+        );
+
+
+    } catch(error) {
+
+        document.getElementById("loading").style.display =
+            "none";
+
+        document.getElementById("empty").style.display =
+            "block";
+
+        document.getElementById("empty").innerText =
+            "Could not connect to Darukaa.Earth API.";
+
+        console.error(error);
+
+    }
+
+}
+
+
+function renderResponse(text) {
+
+    const recContainer =
+        document.getElementById(
+            "recommendations"
+        );
+
+    const sourceContainer =
+        document.getElementById(
+            "sources"
+        );
+
+
+    recContainer.innerHTML = "";
+
+    sourceContainer.innerHTML = "";
+
+
+    const recommendationBlocks =
+        text.split(/RECOMMENDATION \d+:/)
+            .slice(1);
+
+
+    recommendationBlocks.forEach(
+        (block, index) => {
+
+            const lines =
+                block.split("\n")
+                    .filter(
+                        line =>
+                            line.trim() !== ""
+                    );
+
+
+            let action = "";
+            let why = "";
+            let source = "";
+            let impact = "";
+            let horizon = "";
+
+
+            lines.forEach(line => {
+
+                if (
+                    line.includes("Action:")
+                )
+                    action =
+                        line.split(
+                            "Action:"
+                        )[1];
+
+                if (
+                    line.includes(
+                        "Why it works:"
+                    )
+                )
+                    why =
+                        line.split(
+                            "Why it works:"
+                        )[1];
+
+                if (
+                    line.includes(
+                        "Scientific Source:"
+                    )
+                )
+                    source =
+                        line.split(
+                            "Scientific Source:"
+                        )[1];
+
+                if (
+                    line.includes(
+                        "Biodiversity Impact:"
+                    )
+                )
+                    impact =
+                        line.split(
+                            "Biodiversity Impact:"
+                        )[1];
+
+                if (
+                    line.includes(
+                        "Time Horizon:"
+                    )
+                )
+                    horizon =
+                        line.split(
+                            "Time Horizon:"
+                        )[1];
+
+            });
+
+
+            if (!action)
+                return;
+
+
+            recContainer.innerHTML += `
+
+                <div class="recommendation">
+
+                    <h3>
+                        ${index === 0
+                            ? "🌳 Integrated Recommendation"
+                            : "→ Recommended Action"}
+                    </h3>
+
+                    <p>
+                        <strong>${action.trim()}</strong>
+                    </p>
+
+                    <p>
+                        <strong>Why:</strong>
+                        ${why.trim()}
+                    </p>
+
+                    <p>
+                        <strong>Biodiversity impact:</strong>
+                        ${impact.trim()}
+                    </p>
+
+                    <span class="pill">
+                        ${horizon.trim()}
+                    </span>
+
+                </div>
+
+            `;
+
+
+            if (source) {
+
+                sourceContainer.innerHTML += `
+
+                    <div class="source">
+
+                        🌿 ${source.trim()}
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+    );
+
+
+    if (
+        sourceContainer.innerHTML === ""
+    ) {
+
+        sourceContainer.innerHTML =
+            `<div class="source">
+                Scientific evidence retrieved from
+                Darukaa.Earth knowledge base.
+            </div>`;
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>
