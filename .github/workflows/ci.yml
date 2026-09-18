@@ -1,0 +1,42 @@
+﻿name: Darukaa.Earth CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flask flask-cors python-dotenv gunicorn
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile app.py
+          python -m py_compile chatbot.py
+          python -m py_compile knowledge_base.py
+          python -m py_compile recommendation_engine.py
+          python -m py_compile retriever.py
+          python -m py_compile validate.py
+
+      - name: Validate knowledge files
+        run: |
+          python -c "import json; json.load(open('knowledge/sources.json', encoding='utf-8')); print('Knowledge sources JSON valid')"
+
+      - name: Test knowledge retrieval
+        run: |
+          python -c "from retriever import EnvironmentalKnowledgeRetriever; r=EnvironmentalKnowledgeRetriever(); x=r.retrieve('soil biodiversity rainfall land use', top_k=3); assert len(x) > 0; print('Knowledge retrieval test passed')"
