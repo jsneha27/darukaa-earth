@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 venv/
 __pycache__/
 *.pyc
 .env
 *.bak
 *_backup.py
+=======
+﻿venv/
+__pycache__/
+*.pyc
+.env
+*_backup.py
+*.bak
+>>>>>>> cbffe32302357ff465b8023e2be4e966b23085ec
