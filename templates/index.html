@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Darukaa.Earth</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #07140f;
+            color: #e8f5ed;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 30px 8%;
+            border-bottom: 1px solid #183b2c;
+        }
+
+        header h1 {
+            color: #69d391;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-top: 8px;
+            color: #9bb5a5;
+        }
+
+        main {
+            width: 84%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: #0d2118;
+            border: 1px solid #1c4734;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #8ee6aa;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b9cfc1;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+            border-radius: 8px;
+            border: 1px solid #285b43;
+            background: #07140f;
+            color: white;
+        }
+
+        button {
+            margin-top: 22px;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #43bd73;
+            color: #06100b;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #68d994;
+        }
+
+        .recommendation {
+            border-left: 4px solid #43bd73;
+            padding: 18px;
+            margin-top: 15px;
+            background: #091a12;
+            border-radius: 8px;
+        }
+
+        .recommendation h3 {
+            color: #7ce39e;
+            margin-bottom: 10px;
+        }
+
+        .recommendation p {
+            margin: 7px 0;
+            color: #c4d5cb;
+            line-height: 1.5;
+        }
+
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .metric {
+            padding: 8px 12px;
+            background: #153725;
+            border-radius: 20px;
+            color: #9ae6b4;
+        }
+
+        .source {
+            margin-top: 10px;
+            color: #86b99a;
+            font-size: 14px;
+        }
+
+        #status {
+            margin-top: 15px;
+            color: #9bb5a5;
+        }
+
+        @media (max-width: 700px) {
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>🌱 Darukaa.Earth</h1>
+
+    <p>
+        AI-powered environmental intelligence
+        and biodiversity assessment
+    </p>
+
+</header>
+
+
+<main>
+
+    <div class="card">
+
+        <h2>Environmental Assessment</h2>
+
+        <div class="grid">
+
+            <div>
+
+                <label>
+                    Soil Organic Carbon (%)
+                </label>
+
+                <input
+                    id="soil_carbon"
+                    type="number"
+                    step="0.1"
+                    value="0.3"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Annual Rainfall (mm)
+                </label>
+
+                <input
+                    id="rainfall"
+                    type="number"
+                    value="600"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Land Use
+                </label>
+
+                <select id="land_use">
+
+                    <option value="monoculture">
+                        Monoculture
+                    </option>
+
+                    <option value="intercropping">
+                        Intercropping
+                    </option>
+
+                    <option value="agroforestry">
+                        Agroforestry
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Region
+                </label>
+
+                <select id="region">
+
+                    <option value="semi-arid">
+                        Semi-arid
+                    </option>
+
+                    <option value="arid">
+                        Arid
+                    </option>
+
+                    <option value="tropical">
+                        Tropical
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <button onclick="analyze()">
+            ANALYZE ECOSYSTEM
+        </button>
+
+
+        <p id="status"></p>
+
+    </div>
+
+
+    <div id="results"></div>
+
+</main>
+
+
+<script>
+
+async function analyze() {
+
+    const status =
+        document.getElementById("status");
+
+    const results =
+        document.getElementById("results");
+
+
+    status.innerText =
+        "Analyzing environmental conditions...";
+
+    results.innerHTML = "";
+
+
+    const payload = {
+
+        soil_carbon: parseFloat(
+            document.getElementById("soil_carbon").value
+        ),
+
+        rainfall: parseFloat(
+            document.getElementById("rainfall").value
+        ),
+
+        land_use:
+            document.getElementById("land_use").value,
+
+        region:
+            document.getElementById("region").value
+
+    };
+
+
+    try {
+
+        const response = await fetch("/chat", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(payload)
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+
+        status.innerText =
+            "Assessment completed.";
+
+
+        let html = `
+
+            <div class="card">
+
+                <h2>Assessment</h2>
+
+                <p>
+                    ${data.analysis_summary}
+                </p>
+
+                <h2 style="margin-top:25px;">
+                    Impacted Metrics
+                </h2>
+
+                <div class="metrics">
+        `;
+
+
+        data.impacted_metrics.forEach(metric => {
+
+            html += `
+                <span class="metric">
+                    ${metric}
+                </span>
+            `;
+
+        });
+
+
+        html += `
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Recommendations</h2>
+        `;
+
+
+        data.recommendations.forEach(rec => {
+
+            html += `
+
+                <div class="recommendation">
+
+                    <h3>
+                        ${rec.action}
+                    </h3>
+
+                    <p>
+                        <strong>Why:</strong>
+                        ${rec.why}
+                    </p>
+
+                    <p>
+                        <strong>Time horizon:</strong>
+                        ${rec.time_horizon}
+                    </p>
+
+                    <p>
+                        <strong>Confidence:</strong>
+                        ${rec.confidence}
+                    </p>
+
+                    <p class="source">
+                        <strong>Evidence:</strong>
+                        ${rec.source}
+                    </p>
+
+                </div>
+
+            `;
+
+        });
+
+
+        html += `
+
+            </div>
+
+            <div class="card">
+
+                <h2>Retrieved Knowledge</h2>
+
+        `;
+
+
+        data.retrieved_knowledge.forEach(doc => {
+
+            html += `
+
+                <p style="margin:10px 0;">
+
+                    📄 ${doc.filename}
+
+                    — relevance score:
+                    ${doc.score}
+
+                </p>
+
+            `;
+
+        });
+
+
+        html += `
+
+            </div>
+
+        `;
+
+
+        results.innerHTML = html;
+
+
+    } catch (error) {
+
+        status.innerText =
+            "Error: " + error.message;
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

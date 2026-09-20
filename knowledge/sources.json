@@ -1,0 +1,76 @@
+{
+  "sources": [
+    {
+      "id": "FAO_SOIL_BIODIVERSITY",
+      "organization": "FAO",
+      "title": "The State of Knowledge of Soil Biodiversity",
+      "topic": [
+        "soil_health",
+        "soil_biodiversity"
+      ],
+      "url": "https://www.fao.org/interactive/soil-biodiversity/en/"
+    },
+    {
+      "id": "FAO_BIODIVERSITY_2019",
+      "organization": "FAO",
+      "title": "The State of the World's Biodiversity for Food and Agriculture",
+      "year": 2019,
+      "topic": [
+        "biodiversity",
+        "land_use",
+        "agriculture"
+      ],
+      "url": "https://www.fao.org/interactive/state-of-biodiversity-for-food-agriculture/en/"
+    },
+    {
+      "id": "FAO_BIODIVERSITY_FRAMEWORK",
+      "organization": "FAO",
+      "title": "Framework for Action on Biodiversity for Food and Agriculture",
+      "year": 2022,
+      "topic": [
+        "biodiversity",
+        "monitoring",
+        "conservation"
+      ],
+      "url": "https://www.fao.org/3/cb8338en/cb8338en.pdf"
+    },
+    {
+      "id": "FAO_AGROFORESTRY",
+      "organization": "FAO",
+      "title": "Agroforestry",
+      "topic": [
+        "agroforestry",
+        "soil_health",
+        "water",
+        "biodiversity"
+      ],
+      "url": "https://www.fao.org/agroforestry/en"
+    },
+    {
+      "id": "FAO_AGROFORESTRY_FAQ",
+      "organization": "FAO",
+      "title": "FAQs - About Agroforestry",
+      "topic": [
+        "agroforestry",
+        "soil_health",
+        "water",
+        "biodiversity",
+        "climate"
+      ],
+      "url": "https://www.fao.org/agroforestry/about-agroforestry/faqs/"
+    },
+    {
+      "id": "FAO_AGROFORESTRY_SERVICES",
+      "organization": "FAO",
+      "title": "Service Functions of Agroforestry Systems",
+      "topic": [
+        "agroforestry",
+        "soil",
+        "water",
+        "carbon",
+        "biodiversity"
+      ],
+      "url": "https://www.fao.org/4/xii/ms20-e.htm"
+    }
+  ]
+}
